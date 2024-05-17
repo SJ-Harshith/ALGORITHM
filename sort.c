@@ -3,9 +3,9 @@
 int count=0;
 void sort(int a[],int n){
 	int i,j,pos,temp;
-	for(i=0;i<=n-2;i++){
+	for(i=0;i<=n-2;i++){ 
 		pos=i;
-		for(j=i+1;j<=n-1;j++){
+		for(j=i+1;j<=n-1;j++){ 
 			count++;
 			if(a[j]<a[pos])
                   pos=j;

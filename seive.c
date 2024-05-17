@@ -34,7 +34,7 @@ void SieveOfEratosthenes(int n)
 
 int main()
 {
-    int n = 19; // Change this value to n for which you want to find all a <= n
+    int n = 50; // Change this value to n for which you want to find all a <= n
     SieveOfEratosthenes(n);
     return 0;
 }
