@@ -7,11 +7,11 @@ int partition(int a[],int l,int r){
      	do{
 		i++;
 		count++;
-	    }while(a[i]<pivot);
+	    }while(i<r&&a[i]<pivot);
       	do{
 		j--;
 		count++;
-     	}while(a[j]>pivot);
+     	}while(j>l&&a[j]>pivot);
 	    if(i<j){
 		    temp=a[i];
 	     	a[i]=a[j];
