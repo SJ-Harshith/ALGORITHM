@@ -1,0 +1,40 @@
+#include<stdio.h>
+#include<stdlib.h>
+static int count=0;
+void insertionsort(int a[],int n){
+	int i,j,temp;
+	for(i=1;i<n;i++){
+		temp=a[i];
+		j=i-1;
+		while(j>=0&&a[j]>temp){
+			count++;
+			a[j+1]=a[j];
+			j=j-1;
+		}
+		a[j+1]=temp;
+	}	
+}
+int main(){
+	int n,*a,i,checksort=0;
+	printf("enter the n\t");
+	scanf("%d",&n);
+	printf("array elements are \n");
+	a=(int*)malloc(n*sizeof(int));
+	for(i=0;i<n;i++){
+		a[i]=rand()%1001;
+		printf("%d\t",a[i]);
+	}
+    for(i=1;i<n;i++){
+    	if(a[i]<a[i-1]){
+    		checksort=1;
+		}
+	}
+	if(checksort==1){
+		insertionsort(a,n);
+	}
+	printf("sorted array ele \n");
+	for(i=0;i<n;i++)
+	printf("%d\t",a[i]);
+	printf("basic opp count %d",count);
+	
+}
