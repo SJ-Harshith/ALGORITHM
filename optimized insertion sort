@@ -1,40 +1,45 @@
-#include<stdio.h>
-#include<stdlib.h>
-static int count=0;
-void insertionsort(int a[],int n){
-	int i,j,temp;
-	for(i=1;i<n;i++){
-		temp=a[i];
-		j=i-1;
-		while(j>=0&&a[j]>temp){
-			count++;
-			a[j+1]=a[j];
-			j=j-1;
-		}
-		a[j+1]=temp;
-	}	
+#include <stdio.h>
+
+void insertionSort(int array[], int size) {
+    for (int i = 1; i < size; i++) {
+        int key = array[i];
+        int j = i - 1;
+        int swapped = 0;  // Use an integer flag instead of a boolean
+
+        // Move elements of array[0..i-1], that are greater than key,
+        // to one position ahead of their current position
+        while (j >= 0 && array[j] > key) {
+            array[j + 1] = array[j];
+            j--;
+            swapped = 1;  // Set the flag to 1 if a swap occurs
+        }
+        array[j + 1] = key;
+
+        // If no elements were moved, the array is already sorted
+        if (swapped == 0) {
+            break;
+        }
+    }
 }
-int main(){
-	int n,*a,i,checksort=0;
-	printf("enter the n\t");
-	scanf("%d",&n);
-	printf("array elements are \n");
-	a=(int*)malloc(n*sizeof(int));
-	for(i=0;i<n;i++){
-		a[i]=rand()%1001;
-		printf("%d\t",a[i]);
-	}
-    for(i=1;i<n;i++){
-    	if(a[i]<a[i-1]){
-    		checksort=1;
-		}
-	}
-	if(checksort==1){
-		insertionsort(a,n);
-	}
-	printf("sorted array ele \n");
-	for(i=0;i<n;i++)
-	printf("%d\t",a[i]);
-	printf("basic opp count %d",count);
-	
+
+int main() {
+    int n;
+    printf("Enter the number of elements: ");
+    scanf("%d", &n);
+
+    int a[n];
+    printf("Enter the array elements:\n");
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &a[i]);
+    }
+
+    insertionSort(a, n);
+
+    printf("Sorted array:\n");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", a[i]);
+    }
+    printf("\n");
+
+    return 0;
 }
