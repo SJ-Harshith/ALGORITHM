@@ -1,0 +1,47 @@
+#include<stdio.h>
+#include<stdlib.h>
+int indegree[10],cost[10][10],n;
+
+void cal(){//calculate indegree
+	int i,j;
+	for(i=0;i<n;i++){
+		indegree[i]=0;//intialize at first it has 0
+		for(j=0;j<n;j++){
+			indegree[i]=indegree[i]+cost[j][i];//after seeing matrix update indegree
+		}
+	}
+}
+void sourceremoval(){
+	int removed[10]={0},i,k,count;//remove array to track whether that node is removed or not
+	printf("toplogical order\n");
+	for(count=0;count<n;count++){//executes n times 
+		cal();
+		for(i=0;i<n;i++){
+			if(removed[i]==0&&indegree[i]==0){
+				printf("%d\t",i);
+				removed[i]=1;
+				for(k=0;k<n;k++){
+					cost[i][k]=0;
+				}
+			}
+		}
+	}
+	for(i=0;i<n;i++){
+		if(removed[i]==0)
+		printf("no soln or graph is cyclic");
+		exit(0);
+	}
+	printf("graph is acyclic");
+}
+int main(){
+	int i,j;
+	printf("enter  no of vertices\n");
+	scanf("%d",&n);
+	printf("enter the graph in adjacency matrix form\n");
+	for(i=0;i<n;i++){
+		for(j=0;j<n;j++){
+			scanf("%d",&cost[i][j]);
+		}
+	}
+	sourceremoval();
+}
