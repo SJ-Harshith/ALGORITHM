@@ -12,9 +12,9 @@ void cal(){//calculate indegree
 	}
 }
 void sourceremoval(){
-	int removed[10]={0},i,k,count;//remove array to track whether that node is removed or not
+	int removed[10]={0},i,k,check;//remove array to track whether that node is removed or not
 	printf("toplogical order\n");
-	for(count=0;count<n;count++){//executes n times 
+	for(check=0;check<n;check++){//check n vetices
 		cal();
 		for(i=0;i<n;i++){
 			if(removed[i]==0&&indegree[i]==0){
